@@ -50,13 +50,13 @@ class RegisteredUserController extends Controller
         ]));
 
         if ( $user->id == 1){
-           // return "hola";
+            //return "hola";
             $user->roles()->attach(Role::where('name','admin')->get());
         }else{
             $user->roles()->attach(Role::where('name','user')->get());
+            //return "adios";
         }
-        //$user -> roles()->attach(Role::where('name','admin')->first());
-        //$user -> roles()->attach(Role::where('name','user')->first());
+
        event(new Registered($user));
         return redirect(RouteServiceProvider::HOME);
     }

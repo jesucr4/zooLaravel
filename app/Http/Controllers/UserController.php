@@ -103,7 +103,7 @@ class UserController extends Controller
         $user->apellidos = $request->apellidos;
         $user->direccion = $request->direccion;
         $user->telefono = $request->telefono;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->save();
         return redirect()->route('usuario.index');
     }

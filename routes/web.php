@@ -24,9 +24,12 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard')->middleware(['auth','verified']);
 
-Route::resource('animal', AnimalsControllerAlias::class);
+Route::get('/mantenimiento', function (){
+    return view('mantenimiento');
+});
+Route::resource('animal', AnimalsControllerAlias::class);//->middleware(['auth','verified']);
 Route::resource('habitat', HabitatsControllerAlias::class);
-Route::resource('kind', KindsControllerAlias::class);
+Route::resource('kind', KindsControllerAlias::class)->middleware('mantenimiento');
 Route::resource('usuario', \App\Http\Controllers\UserController::class)->middleware(['auth','verified']);
 
 

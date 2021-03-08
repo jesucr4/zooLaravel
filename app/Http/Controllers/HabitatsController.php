@@ -40,9 +40,10 @@ class HabitatsController extends Controller
     {
         $messages = [
             'descripcion.required'=> 'Tiene que escribir una descripción del hábitat',
+            'descripcion.unique'=> 'El hábitat introducido ya existe',
         ];
         $request->validate([
-            'descripcion'=>'required | string',
+            'descripcion'=>'required | string | unique:habitats',
         ],$messages);
 
         $habitat = new Habitat();

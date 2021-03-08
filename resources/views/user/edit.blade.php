@@ -46,6 +46,7 @@
                 <div class="alert alert-danger">{{ $message}}</div>
                 @enderror
             </div>
+            @if($user->id == Auth::user()->id)
             <div class="form-group">
                 <label for="password">Contraseña</label>
                 <input type="password" value="{{$user->password}}" name="password"  class="form-control" id="password" placeholder="password">
@@ -53,7 +54,7 @@
                 <div class="alert alert-danger">{{ $message}}</div>
                 @enderror
             </div>
-
+            @endif
 
             <button type="submit" CLASS="btn btn-primary">Editar</button>
         </form>
